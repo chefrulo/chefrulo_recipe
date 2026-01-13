@@ -1,0 +1,5 @@
+code,name,category,price,uom,supplier,date
+VEG001,Tomato,Vegetables,2.50,kg,Local Farm,2026-01-13
+MEAT001,Chicken Breast,Meat,5.25,kg,Butcher Co,2026-01-12
+DAI001,Milk,Dairy,0.95,l,Daily Dairy,2026-01-10
+DRY001,Rice,Pantry,1.20,kg,Wholesale,2026-01-05

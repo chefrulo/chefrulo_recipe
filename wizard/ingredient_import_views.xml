@@ -22,6 +22,10 @@
                             <strong>Example:</strong>
                             <pre>code,name,category,price,uom,supplier,date
 VEG001,Tomato,Vegetables,2.50,kg,Local Farm,2026-01-13</pre>
+                            <a href="/chefrulo_recipe/static/sample/ingredient_import_example.csv"
+                               class="btn btn-link p-0">
+                                Download sample CSV
+                            </a>
                         </div>
                     </group>
                 </group>

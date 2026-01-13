@@ -105,6 +105,10 @@
         <field name="model">recipe.recipe</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="%(action_report_recipe_cost)d" type="action"
+                            string="Print Cost Report" class="btn-secondary"/>
+                </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
                         <button name="action_recompute_costs" type="object"

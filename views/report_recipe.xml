@@ -5,7 +5,6 @@
             <t t-set="doc" t-value="doc_ids and doc_ids[0]"/>
             <t t-set="records" t-value="docs"/>
             <t t-foreach="records" t-as="o">
-                <t t-set="currency" t-value="o.company_id.currency_id"/>
                 <div class="page">
                     <h2>
                         <span>Recipe Cost Report</span>
@@ -33,55 +32,55 @@
                             <tr>
                                 <th>Ingredients</th>
                                 <td class="text-end">
-                                    <span t-esc="formatLang(o.ingredient_cost, currency_obj=currency)"/>
+                                    <span t-field="o.ingredient_cost"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Labor</th>
                                 <td class="text-end">
-                                    <span t-esc="formatLang(o.labor_cost, currency_obj=currency)"/>
+                                    <span t-field="o.labor_cost"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Energy</th>
                                 <td class="text-end">
-                                    <span t-esc="formatLang(o.energy_cost, currency_obj=currency)"/>
+                                    <span t-field="o.energy_cost"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Packaging</th>
                                 <td class="text-end">
-                                    <span t-esc="formatLang(o.packaging_cost, currency_obj=currency)"/>
+                                    <span t-field="o.packaging_cost"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Extra</th>
                                 <td class="text-end">
-                                    <span t-esc="formatLang(o.extra_cost, currency_obj=currency)"/>
+                                    <span t-field="o.extra_cost"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Total (no labor)</th>
                                 <td class="text-end">
-                                    <span t-esc="formatLang(o.total_cost, currency_obj=currency)"/>
+                                    <span t-field="o.total_cost"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Portion (no labor)</th>
                                 <td class="text-end">
-                                    <span t-esc="formatLang(o.cost_per_portion_no_labor, currency_obj=currency)"/>
+                                    <span t-field="o.cost_per_portion_no_labor"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Grand Total</th>
                                 <td class="text-end">
-                                    <span t-esc="formatLang(o.grand_total, currency_obj=currency)"/>
+                                    <span t-field="o.grand_total"/>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Portion (with labor)</th>
                                 <td class="text-end">
-                                    <span t-esc="formatLang(o.cost_per_portion, currency_obj=currency)"/>
+                                    <span t-field="o.cost_per_portion"/>
                                 </td>
                             </tr>
                         </tbody>
@@ -110,7 +109,7 @@
                                         <span t-esc="line.uom_id.display_name"/>
                                     </td>
                                     <td class="text-end">
-                                        <span t-esc="formatLang(line.cost, currency_obj=currency)"/>
+                                        <span t-field="line.cost"/>
                                     </td>
                                 </tr>
                             </t>

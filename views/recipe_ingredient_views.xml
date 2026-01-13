@@ -35,11 +35,23 @@
     </record>
 
     <!-- Ingredient Views -->
+    <record id="action_recipe_ingredient_sample_csv" model="ir.actions.act_url">
+        <field name="name">Download Sample CSV</field>
+        <field name="url">/chefrulo_recipe/static/sample/ingredient_import_example.csv</field>
+        <field name="target">self</field>
+    </record>
+
     <record id="view_recipe_ingredient_tree" model="ir.ui.view">
         <field name="name">recipe.ingredient.tree</field>
         <field name="model">recipe.ingredient</field>
         <field name="arch" type="xml">
             <tree>
+                <header>
+                    <button name="%(action_ingredient_import)d" type="action"
+                            string="Import CSV" class="btn-primary"/>
+                    <button name="%(action_recipe_ingredient_sample_csv)d" type="action"
+                            string="Download Sample CSV" class="btn-link"/>
+                </header>
                 <field name="code" optional="show"/>
                 <field name="name"/>
                 <field name="category_id"/>
@@ -56,6 +68,12 @@
         <field name="model">recipe.ingredient</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <button name="%(action_ingredient_import)d" type="action"
+                            string="Import CSV" class="btn-primary"/>
+                    <button name="%(action_recipe_ingredient_sample_csv)d" type="action"
+                            string="Download Sample CSV" class="btn-link"/>
+                </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box"/>
                     <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>

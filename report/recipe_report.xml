@@ -3,6 +3,8 @@
     <record id="action_report_recipe_cost" model="ir.actions.report">
         <field name="name">Recipe Cost Report</field>
         <field name="model">recipe.recipe</field>
+        <field name="binding_model_id" ref="model_recipe_recipe"/>
+        <field name="binding_type">report</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">chefrulo_recipe.report_recipe_cost</field>
         <field name="report_file">chefrulo_recipe.report_recipe_cost</field>
