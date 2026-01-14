@@ -35,6 +35,11 @@ class Recipe(models.Model):
     code = fields.Char(string="Code", index=True)
     image = fields.Binary(string="Image", attachment=True)
     category_id = fields.Many2one("recipe.category", string="Category", index=True)
+    product_id = fields.Many2one(
+        "product.product",
+        string="Linked Product",
+        help="Used by Update Product Cost to set the product standard cost.",
+    )
     portions = fields.Integer(string="Portions", default=1)
     description = fields.Text(string="Description")
     instructions = fields.Html(string="Instructions")
@@ -164,6 +169,15 @@ class Recipe(models.Model):
     def action_recompute_costs(self):
         """Manual action to recompute costs."""
         self._compute_costs()
+        return True
+
+    def action_update_product_cost(self):
+        """Copy cost per portion (with labor) to linked product standard_price."""
+        for recipe in self:
+            if recipe.product_id:
+                recipe.product_id.sudo().write(
+                    {"standard_price": recipe.cost_per_portion}
+                )
         return True
 
 
