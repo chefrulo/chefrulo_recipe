@@ -17,7 +17,7 @@
     "category": "Food",
     "author": "Chefrulo",
     "license": "LGPL-3",
-    "depends": ["base", "uom", "base_setup"],
+    "depends": ["base", "uom", "base_setup", "product"],
     "data": [
         "security/ir.model.access.csv",
         "data/recipe_category_data.xml",
