@@ -79,6 +79,21 @@ class IngredientImport(models.TransientModel):
             )
         return category
 
+    def _get_or_create_supplier(self, supplier_name):
+        """Find or create supplier partner."""
+        if not supplier_name:
+            return False
+
+        partner = self.env["res.partner"].search(
+            [("name", "=ilike", supplier_name.strip()), ("supplier_rank", ">", 0)], limit=1
+        )
+        if not partner:
+            partner = self.env["res.partner"].create({
+                "name": supplier_name.strip(),
+                "supplier_rank": 1,
+            })
+        return partner
+
     def _parse_date(self, date_str):
         """Parse date from various formats."""
         if not date_str:
@@ -137,7 +152,7 @@ class IngredientImport(models.TransientModel):
                 category_name = row.get("category", "").strip()
                 price_str = row.get("price", "0").strip()
                 uom_name = row.get("uom", row.get("unit", "")).strip()
-                supplier = row.get("supplier", "").strip()
+                supplier_name = row.get("supplier", "").strip()
                 date_str = row.get("date", "").strip()
 
                 # Validate required fields
@@ -165,6 +180,9 @@ class IngredientImport(models.TransientModel):
                 # Find or create category
                 category = self._get_or_create_category(category_name) if category_name else False
 
+                # Find or create supplier
+                supplier = self._get_or_create_supplier(supplier_name) if supplier_name else False
+
                 # Parse date
                 price_date = self._parse_date(date_str) or fields.Date.today()
 
@@ -187,7 +205,7 @@ class IngredientImport(models.TransientModel):
                 if category:
                     vals["category_id"] = category.id
                 if supplier:
-                    vals["supplier"] = supplier
+                    vals["supplier_id"] = supplier.id
 
                 # Create or update
                 if ingredient:

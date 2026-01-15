@@ -57,7 +57,7 @@
                 <field name="category_id"/>
                 <field name="price"/>
                 <field name="uom_id"/>
-                <field name="supplier" optional="show"/>
+                <field name="supplier_id" optional="show"/>
                 <field name="price_date"/>
             </tree>
         </field>
@@ -91,7 +91,7 @@
                     </group>
                     <group>
                         <group>
-                            <field name="supplier"/>
+                            <field name="supplier_id"/>
                         </group>
                         <group>
                             <field name="active"/>
@@ -115,13 +115,13 @@
                 <field name="name"/>
                 <field name="code"/>
                 <field name="category_id"/>
-                <field name="supplier"/>
+                <field name="supplier_id"/>
                 <filter name="active" string="Active" domain="[('active', '=', True)]"/>
                 <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
                 <separator/>
                 <group expand="0" string="Group By">
                     <filter name="group_category" string="Category" context="{'group_by': 'category_id'}"/>
-                    <filter name="group_supplier" string="Supplier" context="{'group_by': 'supplier'}"/>
+                    <filter name="group_supplier_id" string="Supplier" context="{'group_by': 'supplier_id'}"/>
                 </group>
             </search>
         </field>

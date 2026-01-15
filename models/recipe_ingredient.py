@@ -45,7 +45,12 @@ class RecipeIngredient(models.Model):
     )
     price = fields.Float(string="Price", digits="Product Price")
     price_date = fields.Date(string="Price Date")
-    supplier = fields.Char(string="Supplier")
+    supplier_id = fields.Many2one(
+        "res.partner",
+        string="Supplier",
+        domain="[('supplier_rank', '>', 0)]",
+        help="Select a supplier from contacts",
+    )
     active = fields.Boolean(string="Active", default=True)
     notes = fields.Text(string="Notes")
 
