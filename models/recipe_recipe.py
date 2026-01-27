@@ -216,8 +216,8 @@ class RecipeRecipeLine(models.Model):
                 else:
                     cost = line.quantity * line.ingredient_id.price
             elif line.sub_recipe_id and line.quantity:
-                # Sub-recipe cost (use total_cost of sub-recipe × quantity)
-                cost = line.quantity * line.sub_recipe_id.total_cost
+                # Sub-recipe cost: quantity (portions) × cost per portion (with labor)
+                cost = line.quantity * line.sub_recipe_id.cost_per_portion
             line.cost = cost
 
     @api.onchange("ingredient_id")
