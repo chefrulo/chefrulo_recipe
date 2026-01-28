@@ -46,7 +46,7 @@ class Recipe(models.Model):
     active = fields.Boolean(string="Active", default=True)
 
     # Recipe lines
-    line_ids = fields.One2many("recipe.recipe.line", "recipe_id", string="Ingredients")
+    line_ids = fields.One2many("recipe.recipe.line", "recipe_id", string="Ingredients", copy=True)
 
     # Cost fields - computed
     ingredient_cost = fields.Float(
